@@ -3,3 +3,6 @@ fetch('https://api.coinstats.app/public/v1/coins')
   .then(function(data) {
       console.log(data);
 })
+
+var test
+var test2
