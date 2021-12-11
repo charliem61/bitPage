@@ -1,0 +1,15 @@
+body {
+    background-color: rgb(214, 214, 214);
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(111, 111, 119);
+    color: white;
+    font-weight: bold;
+    font-size: 2.5rem;
+    height: 5rem;
+
+}
