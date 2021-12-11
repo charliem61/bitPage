@@ -1,10 +1,16 @@
 * {
-  border: 1px solid red;
+  margin: 0;
+  padding: 0;
 }
 body {
   background-color: rgb(214, 214, 214);
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-y: scroll;
 }
-
 .title {
   display: flex;
   justify-content: center;
@@ -15,13 +21,43 @@ body {
   font-size: 2.5rem;
   height: 5rem;
 }
-
-.banner {
-  width: 75%;
-  height: 15rem;
+.grid {
+  display: grid;
+  width: 100em;
+  grid-gap: 6rem;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  align-items: start;
 }
-.rightChart {
-    flex-direction: right;
-    width: 25%;
-    height: 15rem;
+.grid-item {
+  background-color: #fff;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: 0.3s;
+}
+.grid-item:hover {
+  transform: translateY(-0.5%);
+  box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.5);
+}
+.card-img {
+  display: block;
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
+}
+.card-content {
+  padding: 3rem;
+}
+.card-header {
+  font-size: 3rem;
+  font-weight: 500;
+  height: 20rem;
+  object-fit: cover;
+}
+.card-text {
+  font-size: 1.6rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.7;
+  color: #333;
 }
