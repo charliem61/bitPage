@@ -4,5 +4,3 @@ fetch('https://api.coinstats.app/public/v1/coins')
       console.log(data);
 })
 
-var test
-var test2
