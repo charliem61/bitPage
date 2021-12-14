@@ -55,8 +55,8 @@ fetch("https://api.coinstats.app/public/v1/coins")
 
     // This Sets the name of the card.
     cardText6.textContent = data.coins[0].id;
-    cardText6.textContent = data.coins[0].id;
-    cardText6.textContent = data.coins[0].id;
+    cardText7.textContent = data.coins[0].id;
+    cardText8.textContent = data.coins[0].id;
 
     // This sets the picture of the card.
     cardImg6.src = data.coins[0].icon;
