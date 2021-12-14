@@ -65,14 +65,15 @@ fetch("https://api.coinstats.app/public/v1/coins")
     // Mason Starts Here
 
     // This Sets the name of the card.
-    cardText0.textContent = data.coins[55].id;
-    cardText1.textContent = data.coins[65].id;
-    cardText2.textContent = data.coins[34].id;
+    cardText0.textContent = data.coins[6].id;
+    cardText1.textContent = data.coins[3].id;
+    cardText2.textContent = data.coins[38].id;
 
     // This sets the picture of the card.
-    cardImg0.src = data.coins[55].icon;
-    cardImg1.src = data.coins[65].icon;
-    cardImg2.src = data.coins[34].icon;
+    cardImg0.src = data.coins[6].icon;
+    cardImg1.src = data.coins[3].icon;
+    cardImg2.src = data.coins[38].icon;
+
     ////////////////////////////////////////////////
     // Alberto Starts Here
 
