@@ -1,4 +1,4 @@
-//Global Variables Here
+const closeButtonEl = document.getElementById("modal-close");
 
 // Card Elements
 const cardEl0 = document.getElementById("card0");
@@ -97,4 +97,11 @@ fetch("https://api.coinstats.app/public/v1/coins")
     cardImg6.src = data.coins[0].icon;
     cardImg7.src = data.coins[1].icon;
     cardImg8.src = data.coins[99].icon;
+
+    cardContent0.addEventListener("click", function () {
+      document.getElementById("modal0").classList.add("is-active");
+    });
+    closeButtonEl.addEventListener("click", function () {
+      document.getElementById("modal0").classList.remove("is-active");
+    });
   });
