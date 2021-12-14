@@ -11,6 +11,17 @@ const cardEl6 = document.getElementById("card6");
 const cardEl7 = document.getElementById("card7");
 const cardEl8 = document.getElementById("card8");
 
+// Card Content
+const cardContent0 = document.getElementById("card-content0");
+const cardContent1 = document.getElementById("card-content1");
+const cardContent2 = document.getElementById("card-content2");
+const cardContent3 = document.getElementById("card-content3");
+const cardContent4 = document.getElementById("card-content4");
+const cardContent5 = document.getElementById("card-content5");
+const cardContent6 = document.getElementById("card-content6");
+const cardContent7 = document.getElementById("card-content7");
+const cardContent8 = document.getElementById("card-content8");
+
 // Card Images
 const cardImg0 = document.getElementById("img0");
 const cardImg1 = document.getElementById("img1");
@@ -50,28 +61,20 @@ fetch("https://api.coinstats.app/public/v1/coins")
   })
   .then(function (data) {
     console.log(data);
-
-    // Set Up Cards Here
+    ////////////////////////////////////////////////
+    // Mason Starts Here
 
     // This Sets the name of the card.
-    cardText6.textContent = data.coins[0].id;
-    cardText7.textContent = data.coins[0].id;
-    cardText8.textContent = data.coins[0].id;
+    cardText0.textContent = data.coins[55].id;
+    cardText1.textContent = data.coins[65].id;
+    cardText2.textContent = data.coins[34].id;
 
     // This sets the picture of the card.
-    cardImg6.src = data.coins[0].icon;
-    cardImg7.src = data.coins[0].icon;
-    cardImg8.src = data.coins[0].icon;
-  });
-
-  fetch("https://api.coinstats.app/public/v1/coins")
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-
-    // Set Up Cards Here
+    cardImg0.src = data.coins[55].icon;
+    cardImg1.src = data.coins[65].icon;
+    cardImg2.src = data.coins[34].icon;
+    ////////////////////////////////////////////////
+    // Alberto Starts Here
 
     // This Sets the name of the card.
     cardText3.textContent = data.coins[9].id;
@@ -82,4 +85,16 @@ fetch("https://api.coinstats.app/public/v1/coins")
     cardImg3.src = data.coins[9].icon;
     cardImg4.src = data.coins[12].icon;
     cardImg5.src = data.coins[8].icon;
+
+    ////////////////////////////////////////////////
+    // Nate Starts Here
+    // This Sets the name of the card.
+    cardText6.textContent = data.coins[0].id;
+    cardText7.textContent = data.coins[1].id;
+    cardText8.textContent = data.coins[99].id;
+
+    // This sets the picture of the card.
+    cardImg6.src = data.coins[0].icon;
+    cardImg7.src = data.coins[1].icon;
+    cardImg8.src = data.coins[99].icon;
   });
