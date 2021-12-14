@@ -63,3 +63,23 @@ fetch("https://api.coinstats.app/public/v1/coins")
     cardImg7.src = data.coins[0].icon;
     cardImg8.src = data.coins[0].icon;
   });
+
+  fetch("https://api.coinstats.app/public/v1/coins")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+
+    // Set Up Cards Here
+
+    // This Sets the name of the card.
+    cardText3.textContent = data.coins[9].id;
+    cardText4.textContent = data.coins[12].id;
+    cardText5.textContent = data.coins[8].id;
+
+    // This sets the picture of the card.
+    cardImg3.src = data.coins[9].icon;
+    cardImg4.src = data.coins[12].icon;
+    cardImg5.src = data.coins[8].icon;
+  });
