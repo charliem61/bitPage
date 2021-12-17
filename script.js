@@ -2,27 +2,6 @@ const closeButtonEl = document.getElementById("modal-close");
 const cryptoContainer = document.getElementById("crypto-container");
 
 var cryptoData;
-// Card Elements
-const cardEl0 = document.getElementById("card0");
-const cardEl1 = document.getElementById("card1");
-const cardEl2 = document.getElementById("card2");
-const cardEl3 = document.getElementById("card3");
-const cardEl4 = document.getElementById("card4");
-const cardEl5 = document.getElementById("card5");
-const cardEl6 = document.getElementById("card6");
-const cardEl7 = document.getElementById("card7");
-const cardEl8 = document.getElementById("card8");
-
-// Card Content
-const cardContent0 = document.getElementById("card-content0");
-const cardContent1 = document.getElementById("card-content1");
-const cardContent2 = document.getElementById("card-content2");
-const cardContent3 = document.getElementById("card-content3");
-const cardContent4 = document.getElementById("card-content4");
-const cardContent5 = document.getElementById("card-content5");
-const cardContent6 = document.getElementById("card-content6");
-const cardContent7 = document.getElementById("card-content7");
-const cardContent8 = document.getElementById("card-content8");
 
 // Card Images
 const cardImg0 = document.getElementById("img0");
@@ -34,17 +13,6 @@ const cardImg5 = document.getElementById("img5");
 const cardImg6 = document.getElementById("img6");
 const cardImg7 = document.getElementById("img7");
 const cardImg8 = document.getElementById("img8");
-
-// Card Header
-const cardHeader0 = document.getElementById("card-header0");
-const cardHeader1 = document.getElementById("card-header1");
-const cardHeader2 = document.getElementById("card-header2");
-const cardHeader3 = document.getElementById("card-header3");
-const cardHeader4 = document.getElementById("card-header4");
-const cardHeader5 = document.getElementById("card-header5");
-const cardHeader6 = document.getElementById("card-header6");
-const cardHeader7 = document.getElementById("card-header7");
-const cardHeader8 = document.getElementById("card-header8");
 
 // Card Text Content
 const cardText0 = document.getElementById("card-text0");
@@ -102,10 +70,6 @@ fetch("https://api.coinstats.app/public/v1/coins")
     cardImg7.src = data.coins[7].icon;
     cardImg8.src = data.coins[8].icon;
   }); //End of fetch function
-
-// cardContent0.addEventListener("click", function () {
-//   document.getElementById("modal0").classList.add("is-active");
-// });
 
 closeButtonEl.addEventListener("click", function () {
   document.getElementById("modal").classList.remove("is-active");
