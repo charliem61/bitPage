@@ -13,7 +13,7 @@
   </head>
   <body>
     <header class="title">Crypto Currency Statistics</header>
-    <div class="crypto-cards">
+    <div class="crypto-cards" id="crypto-container">
       <div class="grid" id="grid0">
         <div class="grid-item" id="grid-item0">
           <div class="card" id="card0">
@@ -123,10 +123,16 @@
         </div>
       </div>
     </div>
-    <div id="modal0" class="modal">
+
+    <!-- Modal Starts Here -->
+    <div id="modal" class="modal">
       <div class="modal-background"></div>
       <div class="modal-content">
         <!-- Any other Bulma elements you want -->
+        <h1 id="coin-name" class="bigFont"></h1>
+        <p id="hour-change"></p>
+        <p id="day-change"></p>
+        <p id="week-change"></p>
       </div>
       <button
         id="modal-close"
@@ -134,6 +140,7 @@
         aria-label="close"
       ></button>
     </div>
+    <!-- Modal Ends Here -->
   </body>
 
   <script src="script.js"></script>

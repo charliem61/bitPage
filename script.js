@@ -1,5 +1,7 @@
 const closeButtonEl = document.getElementById("modal-close");
+const cryptoContainer = document.getElementById("crypto-container");
 
+var cryptoData;
 // Card Elements
 const cardEl0 = document.getElementById("card0");
 const cardEl1 = document.getElementById("card1");
@@ -61,48 +63,72 @@ fetch("https://api.coinstats.app/public/v1/coins")
   })
   .then(function (data) {
     console.log(data);
+    cryptoData = data.coins;
     ////////////////////////////////////////////////
     // Mason Starts Here
 
     // This Sets the name of the card.
-    cardText0.textContent = data.coins[6].id;
-    cardText1.textContent = data.coins[3].id;
-    cardText2.textContent = data.coins[38].id;
+    cardText0.textContent = data.coins[0].id;
+    cardText1.textContent = data.coins[1].id;
+    cardText2.textContent = data.coins[2].id;
 
     // This sets the picture of the card.
-    cardImg0.src = data.coins[6].icon;
-    cardImg1.src = data.coins[3].icon;
-    cardImg2.src = data.coins[38].icon;
+    cardImg0.src = data.coins[0].icon;
+    cardImg1.src = data.coins[1].icon;
+    cardImg2.src = data.coins[2].icon;
 
     ////////////////////////////////////////////////
     // Alberto Starts Here
 
     // This Sets the name of the card.
-    cardText3.textContent = data.coins[9].id;
-    cardText4.textContent = data.coins[12].id;
-    cardText5.textContent = data.coins[8].id;
+    cardText3.textContent = data.coins[3].id;
+    cardText4.textContent = data.coins[4].id;
+    cardText5.textContent = data.coins[5].id;
 
     // This sets the picture of the card.
-    cardImg3.src = data.coins[9].icon;
-    cardImg4.src = data.coins[12].icon;
-    cardImg5.src = data.coins[8].icon;
+    cardImg3.src = data.coins[3].icon;
+    cardImg4.src = data.coins[4].icon;
+    cardImg5.src = data.coins[5].icon;
 
     ////////////////////////////////////////////////
     // Nate Starts Here
     // This Sets the name of the card.
-    cardText6.textContent = data.coins[0].id;
-    cardText7.textContent = data.coins[1].id;
-    cardText8.textContent = data.coins[99].id;
+    cardText6.textContent = data.coins[6].id;
+    cardText7.textContent = data.coins[7].id;
+    cardText8.textContent = data.coins[8].id;
 
     // This sets the picture of the card.
-    cardImg6.src = data.coins[0].icon;
-    cardImg7.src = data.coins[1].icon;
-    cardImg8.src = data.coins[99].icon;
+    cardImg6.src = data.coins[6].icon;
+    cardImg7.src = data.coins[7].icon;
+    cardImg8.src = data.coins[8].icon;
+  }); //End of fetch function
 
-    cardContent0.addEventListener("click", function () {
-      document.getElementById("modal0").classList.add("is-active");
-    });
-    closeButtonEl.addEventListener("click", function () {
-      document.getElementById("modal0").classList.remove("is-active");
-    });
-  });
+// cardContent0.addEventListener("click", function () {
+//   document.getElementById("modal0").classList.add("is-active");
+// });
+
+closeButtonEl.addEventListener("click", function () {
+  document.getElementById("modal").classList.remove("is-active");
+});
+
+cryptoContainer.addEventListener("click", function (event) {
+  document.getElementById("modal").classList.add("is-active");
+
+  // let id = event.target.id;
+  // let index;
+  // for (var i = 0; i < cryptoData.length; i++) {
+  //   console.log(cryptoData[i].id);
+  //   if (cryptoData[i].id === id) {
+  //     index = i;
+  //     break;
+  //   }
+  // }
+  // console.log(index);
+
+  // assumes that you keep the fetched coin array the same on the page
+  let index = event.target.id[event.target.id.length - 1];
+  let myCryptoData = cryptoData[index];
+  let name = myCryptoData.name;
+  let cardTitleEl = document.getElementById("coin-name");
+  cardTitleEl.textContent = name;
+});
