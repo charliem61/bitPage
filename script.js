@@ -87,22 +87,28 @@ cryptoContainer.addEventListener("click", function (event) {
   let cardTitleEl = document.getElementById("coin-name");
   cardTitleEl.textContent = name;
 
+    //Current price
+    let price = myCryptoData.price;
+    let priceEl = document.getElementById("price");
+    priceEl.textContent = "$" + price;
+    console.log(price);
+
   //Price Change over 1 hr
   let hourChange = myCryptoData.priceChange1h;
   let hourChangeEl = document.getElementById("1hr");
-  hourChangeEl.textContent = hourChange;
+  hourChangeEl.textContent = "$" + hourChange;
   // console.log(hourChange);
 
   //Price Change over 1 Day
   let dayChange = myCryptoData.priceChange1d;
   let dayChangeEl = document.getElementById("1d");
-  dayChangeEl.textContent = dayChange;
+  dayChangeEl.textContent = "$" + dayChange;
   // console.log(dayChange);
 
   //Price Change over 1 Week
   let weekChange = myCryptoData.priceChange1w;
   let weekChangeEl = document.getElementById("1w");
-  weekChangeEl.textContent = weekChange;
+  weekChangeEl.textContent = "$" + weekChange;
   // console.log(weekChange);
 });
 
