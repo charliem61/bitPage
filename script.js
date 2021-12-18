@@ -6,6 +6,27 @@ var favoriteStatus = [];
 var currentCoinObject;
 var cryptoData;
 
+// Init function
+function init() {
+  (keys = Object.keys(localStorage)), (i = keys.length);
+
+  while (i--) {
+    favoriteStatus.push(localStorage.getItem(keys[i]));
+    localStorage.getItem("true");
+  }
+  console.log(favoriteStatus);
+  return favoriteStatus;
+}
+// function allStorage() {
+//   // var values = [],
+//   (keys = Object.keys(localStorage)), (i = keys.length);
+
+//   while (i--) {
+//     values.push(localStorage.getItem(keys[i]));
+//   }
+
+//   return values;
+// }
 // Card Images
 const cardImg0 = document.getElementById("img0");
 const cardImg1 = document.getElementById("img1");
@@ -36,7 +57,6 @@ fetch("https://api.coinstats.app/public/v1/coins")
     console.log(data);
     cryptoData = data.coins;
     ////////////////////////////////////////////////
-    // Mason Starts Here
 
     // This Sets the name of the card.
     cardText0.textContent = data.coins[0].id;
@@ -118,6 +138,12 @@ cryptoContainer.addEventListener("click", function (event) {
   if (favoriteStatus.includes(currentCoinObject.id)) {
     favoriteImage.dataset.state = "full";
     favoriteImage.setAttribute("src", favoriteImage.dataset.full);
+
+    // Set image status in local storage
+    window.localStorage.setItem(
+      favoriteImage.dataset.state,
+      JSON.stringify("true")
+    );
   } else {
     favoriteImage.dataset.state = "empty";
     favoriteImage.setAttribute("src", favoriteImage.dataset.empty);
@@ -130,12 +156,6 @@ window.addEventListener("keydown", function keyPress(e) {
     document.getElementById("modal").classList.remove("is-active");
   }
 });
-
-// const favoriteEl = document.getElementById("favorite");
-// const isFavorite = true;
-// favoriteEl.addEventListener("click", function () {
-//   favoriteEl.src = "icons/starFilled.png";
-// });
 
 var imageContainer = document.getElementById("imageContainer");
 var favoriteImage = document.getElementById("favorite");
@@ -151,7 +171,10 @@ imageContainer.addEventListener("click", function (event) {
       element.dataset.state = "full";
       element.setAttribute("src", element.dataset.full);
       favoriteStatus.push(currentCoinObject.id);
-      window.localStorage.setItem(currentCoinObject.id, JSON.stringify(currentCoinObject.name));
+      window.localStorage.setItem(
+        currentCoinObject.id,
+        JSON.stringify(currentCoinObject.name)
+      );
     } else {
       element.dataset.state = "empty";
       element.setAttribute("src", element.dataset.empty);
@@ -164,6 +187,6 @@ imageContainer.addEventListener("click", function (event) {
     console.log(localStorage);
     // window.localStorage.clear();
     // window.localStorage.setItem("favoriteStatus", JSON.stringify(favoriteStatus));
-
   }
 });
+init();
