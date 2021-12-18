@@ -78,21 +78,37 @@ closeButtonEl.addEventListener("click", function () {
 cryptoContainer.addEventListener("click", function (event) {
   document.getElementById("modal").classList.add("is-active");
 
-  // let id = event.target.id;
-  // let index;
-  // for (var i = 0; i < cryptoData.length; i++) {
-  //   console.log(cryptoData[i].id);
-  //   if (cryptoData[i].id === id) {
-  //     index = i;
-  //     break;
-  //   }
-  // }
-  // console.log(index);
-
-  // assumes that you keep the fetched coin array the same on the page
+  //Grabbing coin by user click
   let index = event.target.id[event.target.id.length - 1];
+  console.log(index);
+  // Geting Crypto name and adding it to modal
   let myCryptoData = cryptoData[index];
   let name = myCryptoData.name;
   let cardTitleEl = document.getElementById("coin-name");
   cardTitleEl.textContent = name;
+
+  //Price Change over 1 hr
+  let hourChange = myCryptoData.priceChange1h;
+  let hourChangeEl = document.getElementById("1hr");
+  hourChangeEl.textContent = hourChange;
+  // console.log(hourChange);
+
+  //Price Change over 1 Day
+  let dayChange = myCryptoData.priceChange1d;
+  let dayChangeEl = document.getElementById("1d");
+  dayChangeEl.textContent = dayChange;
+  // console.log(dayChange);
+
+  //Price Change over 1 Week
+  let weekChange = myCryptoData.priceChange1w;
+  let weekChangeEl = document.getElementById("1w");
+  weekChangeEl.textContent = weekChange;
+  // console.log(weekChange);
+});
+
+window.addEventListener("keydown", function keyPress(e) {
+  // console.log(e);
+  if (e.key === "Escape") {
+    document.getElementById("modal").classList.remove("is-active");
+  }
 });
