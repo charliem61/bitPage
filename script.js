@@ -151,6 +151,7 @@ imageContainer.addEventListener("click", function (event) {
       element.dataset.state = "full";
       element.setAttribute("src", element.dataset.full);
       favoriteStatus.push(currentCoinObject.id);
+      window.localStorage.setItem(currentCoinObject.id, JSON.stringify(currentCoinObject.name));
     } else {
       element.dataset.state = "empty";
       element.setAttribute("src", element.dataset.empty);
@@ -160,5 +161,9 @@ imageContainer.addEventListener("click", function (event) {
     }
     console.log(favoriteStatus);
     // Save in local storage :D
+    console.log(localStorage);
+    // window.localStorage.clear();
+    // window.localStorage.setItem("favoriteStatus", JSON.stringify(favoriteStatus));
+
   }
 });
