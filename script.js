@@ -1,6 +1,9 @@
 const closeButtonEl = document.getElementById("modal-close");
 const cryptoContainer = document.getElementById("crypto-container");
 
+// Load Local storage Here
+var favoriteStatus = [];
+var currentCoinObject;
 var cryptoData;
 
 // Card Images
@@ -82,39 +85,80 @@ cryptoContainer.addEventListener("click", function (event) {
   let index = event.target.id[event.target.id.length - 1];
   console.log(index);
   // Geting Crypto name and adding it to modal
-  let myCryptoData = cryptoData[index];
-  let name = myCryptoData.name;
+  currentCoinObject = cryptoData[index];
+  let name = currentCoinObject.name;
   let cardTitleEl = document.getElementById("coin-name");
   cardTitleEl.textContent = name;
 
-    //Current price
-    let price = myCryptoData.price;
-    let priceEl = document.getElementById("price");
-    priceEl.textContent = "$" + price;
-    console.log(price);
+  //Current price
+  let price = currentCoinObject.price;
+  let priceEl = document.getElementById("price");
+  priceEl.textContent = "$" + price;
+  // console.log(price);
 
   //Price Change over 1 hr
-  let hourChange = myCryptoData.priceChange1h;
+  let hourChange = currentCoinObject.priceChange1h;
   let hourChangeEl = document.getElementById("1hr");
   hourChangeEl.textContent = "$" + hourChange;
   // console.log(hourChange);
 
   //Price Change over 1 Day
-  let dayChange = myCryptoData.priceChange1d;
+  let dayChange = currentCoinObject.priceChange1d;
   let dayChangeEl = document.getElementById("1d");
   dayChangeEl.textContent = "$" + dayChange;
   // console.log(dayChange);
 
   //Price Change over 1 Week
-  let weekChange = myCryptoData.priceChange1w;
+  let weekChange = currentCoinObject.priceChange1w;
   let weekChangeEl = document.getElementById("1w");
   weekChangeEl.textContent = "$" + weekChange;
   // console.log(weekChange);
+
+  // Starts modal with blank star
+  if (favoriteStatus.includes(currentCoinObject.id)) {
+    favoriteImage.dataset.state = "full";
+    favoriteImage.setAttribute("src", favoriteImage.dataset.full);
+  } else {
+    favoriteImage.dataset.state = "empty";
+    favoriteImage.setAttribute("src", favoriteImage.dataset.empty);
+  }
 });
 
 window.addEventListener("keydown", function keyPress(e) {
   // console.log(e);
   if (e.key === "Escape") {
     document.getElementById("modal").classList.remove("is-active");
+  }
+});
+
+// const favoriteEl = document.getElementById("favorite");
+// const isFavorite = true;
+// favoriteEl.addEventListener("click", function () {
+//   favoriteEl.src = "icons/starFilled.png";
+// });
+
+var imageContainer = document.getElementById("imageContainer");
+var favoriteImage = document.getElementById("favorite");
+
+imageContainer.addEventListener("click", function (event) {
+  var element = event.target;
+  // console.log(currentCoinObject);
+
+  if (element.matches("img")) {
+    var state = element.getAttribute("data-state");
+
+    if (state === "empty") {
+      element.dataset.state = "full";
+      element.setAttribute("src", element.dataset.full);
+      favoriteStatus.push(currentCoinObject.id);
+    } else {
+      element.dataset.state = "empty";
+      element.setAttribute("src", element.dataset.empty);
+      var currentArr = favoriteStatus.indexOf(currentCoinObject.id);
+      console.log(currentArr);
+      favoriteStatus.splice(currentArr, 1);
+    }
+    console.log(favoriteStatus);
+    // Save in local storage :D
   }
 });
