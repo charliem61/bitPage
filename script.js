@@ -10,11 +10,10 @@ var cryptoData;
 function init() {
   (keys = Object.keys(localStorage)), (i = keys.length);
 
-  while (i--) {
-    favoriteStatus.push(localStorage.getItem(keys[i]));
-    localStorage.getItem("true");
-  }
-  console.log(favoriteStatus);
+    if (localStorage.getItem("coins")) {
+      favoriteStatus = JSON.parse(localStorage.getItem("coins"))
+    }
+
   return favoriteStatus;
 }
 // function allStorage() {
@@ -135,15 +134,15 @@ cryptoContainer.addEventListener("click", function (event) {
   // console.log(weekChange);
 
   // Starts modal with blank star
-  if (favoriteStatus.includes(currentCoinObject.id)) {
+  if (favoriteStatus.indexOf(currentCoinObject.name) > -1) {
     favoriteImage.dataset.state = "full";
     favoriteImage.setAttribute("src", favoriteImage.dataset.full);
 
     // Set image status in local storage
-    window.localStorage.setItem(
-      favoriteImage.dataset.state,
-      JSON.stringify("true")
-    );
+    // window.localStorage.setItem(
+    //   favoriteImage.dataset.state,
+    //   JSON.stringify("true")
+    // );
   } else {
     favoriteImage.dataset.state = "empty";
     favoriteImage.setAttribute("src", favoriteImage.dataset.empty);
@@ -170,10 +169,10 @@ imageContainer.addEventListener("click", function (event) {
     if (state === "empty") {
       element.dataset.state = "full";
       element.setAttribute("src", element.dataset.full);
-      favoriteStatus.push(currentCoinObject.id);
+      favoriteStatus.push(currentCoinObject.name);
       window.localStorage.setItem(
-        currentCoinObject.id,
-        JSON.stringify(currentCoinObject.name)
+        "coins",
+        JSON.stringify(favoriteStatus)
       );
     } else {
       element.dataset.state = "empty";
