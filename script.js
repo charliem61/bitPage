@@ -6,7 +6,7 @@ var favoriteStatus = [];
 var currentCoinObject;
 var cryptoData;
 
-// Init function
+// Init function to get "favorites" from local storage when loading page
 function init() {
   (keys = Object.keys(localStorage)), (i = keys.length);
 
@@ -16,16 +16,7 @@ function init() {
 
   return favoriteStatus;
 }
-// function allStorage() {
-//   // var values = [],
-//   (keys = Object.keys(localStorage)), (i = keys.length);
 
-//   while (i--) {
-//     values.push(localStorage.getItem(keys[i]));
-//   }
-
-//   return values;
-// }
 // Card Images
 const cardImg0 = document.getElementById("img0");
 const cardImg1 = document.getElementById("img1");
@@ -59,7 +50,6 @@ fetch("https://api.coinstats.app/public/v1/coins")
   .then(function (data) {
     console.log(data);
     cryptoData = data.coins;
-    ////////////////////////////////////////////////
 
     // This Sets the name of the card.
     cardText0.textContent = data.coins[0].id;
@@ -71,9 +61,6 @@ fetch("https://api.coinstats.app/public/v1/coins")
     cardImg1.src = data.coins[1].icon;
     cardImg2.src = data.coins[2].icon;
 
-    ////////////////////////////////////////////////
-    // Alberto Starts Here
-
     // This Sets the name of the card.
     cardText3.textContent = data.coins[3].id;
     cardText4.textContent = data.coins[4].id;
@@ -84,8 +71,6 @@ fetch("https://api.coinstats.app/public/v1/coins")
     cardImg4.src = data.coins[4].icon;
     cardImg5.src = data.coins[5].icon;
 
-    ////////////////////////////////////////////////
-    // Nate Starts Here
     // This Sets the name of the card.
     cardText6.textContent = data.coins[6].id;
     cardText7.textContent = data.coins[7].id;
@@ -97,10 +82,12 @@ fetch("https://api.coinstats.app/public/v1/coins")
     cardImg8.src = data.coins[8].icon;
   }); //End of fetch function
 
+  // Function to close modal using the X
 closeButtonEl.addEventListener("click", function () {
   document.getElementById("modal").classList.remove("is-active");
 });
 
+  // Fetch function to add jokes to page
 fetch("https://v2.jokeapi.dev/joke/Any?safe-mode")
   .then(function (response) {
     return response.json();
@@ -115,6 +102,7 @@ fetch("https://v2.jokeapi.dev/joke/Any?safe-mode")
     deliveryEl.textContent = data.delivery;
   });
 
+  // Function to open modal and display cryptocurrency to modal
 cryptoContainer.addEventListener("click", function (event) {
   document.getElementById("modal").classList.add("is-active");
 
@@ -130,14 +118,12 @@ cryptoContainer.addEventListener("click", function (event) {
   //Current price
   let price = currentCoinObject.price;
   let priceEl = document.getElementById("price");
-  priceEl.textContent = "$" + price;
-  // console.log(price);
+  priceEl.textContent = "$" + price; 
 
   //Price Change over 1 hr
   let hourChange = currentCoinObject.priceChange1h;
   let hourChangeEl = document.getElementById("1hr");
   hourChangeEl.textContent = "$" + hourChange;
-  // console.log(hourChange);
 
   //Price Change over 1 Day
   let dayChange = currentCoinObject.priceChange1d;
@@ -156,19 +142,14 @@ cryptoContainer.addEventListener("click", function (event) {
     favoriteImage.dataset.state = "full";
     favoriteImage.setAttribute("src", favoriteImage.dataset.full);
 
-    // Set image status in local storage
-    // window.localStorage.setItem(
-    //   favoriteImage.dataset.state,
-    //   JSON.stringify("true")
-    // );
   } else {
     favoriteImage.dataset.state = "empty";
     favoriteImage.setAttribute("src", favoriteImage.dataset.empty);
   }
 });
 
+  // esc key to close modal
 window.addEventListener("keydown", function keyPress(e) {
-  // console.log(e);
   if (e.key === "Escape") {
     document.getElementById("modal").classList.remove("is-active");
   }
@@ -177,9 +158,9 @@ window.addEventListener("keydown", function keyPress(e) {
 var imageContainer = document.getElementById("imageContainer");
 var favoriteImage = document.getElementById("favorite");
 
+  // function to save  cryptocurrency to "favorite"
 imageContainer.addEventListener("click", function (event) {
   var element = event.target;
-  // console.log(currentCoinObject);
 
   if (element.matches("img")) {
     var state = element.getAttribute("data-state");
@@ -196,11 +177,8 @@ imageContainer.addEventListener("click", function (event) {
       favoriteStatus.splice(currentArr, 1);
     }
     console.log(favoriteStatus);
-    // Save in local storage :D
     window.localStorage.setItem("coins", JSON.stringify(favoriteStatus));
     console.log(localStorage);
-    // window.localStorage.clear();
-    // window.localStorage.setItem("favoriteStatus", JSON.stringify(favoriteStatus));
   }
 });
 init();
