@@ -48,6 +48,10 @@ const cardText6 = document.getElementById("card-text6");
 const cardText7 = document.getElementById("card-text7");
 const cardText8 = document.getElementById("card-text8");
 
+// joke content
+const joke = document.getElementById("joke");
+const punch = document.getElementById("punch");
+
 fetch("https://api.coinstats.app/public/v1/coins")
   .then(function (response) {
     return response.json();
@@ -96,6 +100,19 @@ fetch("https://api.coinstats.app/public/v1/coins")
 closeButtonEl.addEventListener("click", function () {
   document.getElementById("modal").classList.remove("is-active");
 });
+
+fetch("https://api.coinstats.app/public/v1/coins")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    cryptoData = data.coins;
+    ////////////////////////////////////////////////
+
+    // This Sets the name of the card.
+    cardText0.textContent = data.coins[0].id;
+  });
 
 cryptoContainer.addEventListener("click", function (event) {
   document.getElementById("modal").classList.add("is-active");
@@ -170,10 +187,6 @@ imageContainer.addEventListener("click", function (event) {
       element.dataset.state = "full";
       element.setAttribute("src", element.dataset.full);
       favoriteStatus.push(currentCoinObject.name);
-      window.localStorage.setItem(
-        "coins",
-        JSON.stringify(favoriteStatus)
-      );
     } else {
       element.dataset.state = "empty";
       element.setAttribute("src", element.dataset.empty);
@@ -183,6 +196,10 @@ imageContainer.addEventListener("click", function (event) {
     }
     console.log(favoriteStatus);
     // Save in local storage :D
+    window.localStorage.setItem(
+      "coins",
+      JSON.stringify(favoriteStatus)
+    );
     console.log(localStorage);
     // window.localStorage.clear();
     // window.localStorage.setItem("favoriteStatus", JSON.stringify(favoriteStatus));
