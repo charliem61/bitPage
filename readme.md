@@ -2,7 +2,7 @@ Bit Coin Project
 
 Repo Link: https://github.com/charliem61/bitPage
 
-Live Url: https://github.com/charliem61/bitPage.git
+Live Url: https://charliem61.github.io/bitPage/
 
 Goal/Motivation:
 
