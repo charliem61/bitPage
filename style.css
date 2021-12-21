@@ -77,3 +77,24 @@
   font-size: 1.5rem;
   font-family: "Courier New", Courier, monospace;
 }
+
+.jokes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.joke {
+  color: #333;
+  font-size: 1rem;
+}
+
+.punch {
+  color: #333;
+  font-size: 0.75rem;
+}
+.reveal {
+  width: 2rem;
+  height: 2rem;
+}

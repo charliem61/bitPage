@@ -10,9 +10,9 @@ var cryptoData;
 function init() {
   (keys = Object.keys(localStorage)), (i = keys.length);
 
-    if (localStorage.getItem("coins")) {
-      favoriteStatus = JSON.parse(localStorage.getItem("coins"))
-    }
+  if (localStorage.getItem("coins")) {
+    favoriteStatus = JSON.parse(localStorage.getItem("coins"));
+  }
 
   return favoriteStatus;
 }
@@ -101,17 +101,18 @@ closeButtonEl.addEventListener("click", function () {
   document.getElementById("modal").classList.remove("is-active");
 });
 
-fetch("https://api.coinstats.app/public/v1/coins")
+fetch("https://v2.jokeapi.dev/joke/Any?safe-mode")
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
     console.log(data);
-    cryptoData = data.coins;
-    ////////////////////////////////////////////////
+    const setupEl = document.getElementById("setup");
+    const deliveryEl = document.getElementById("delivery");
 
-    // This Sets the name of the card.
-    cardText0.textContent = data.coins[0].id;
+    setupEl.textContent = data.setup;
+
+    deliveryEl.textContent = data.delivery;
   });
 
 cryptoContainer.addEventListener("click", function (event) {
@@ -196,10 +197,7 @@ imageContainer.addEventListener("click", function (event) {
     }
     console.log(favoriteStatus);
     // Save in local storage :D
-    window.localStorage.setItem(
-      "coins",
-      JSON.stringify(favoriteStatus)
-    );
+    window.localStorage.setItem("coins", JSON.stringify(favoriteStatus));
     console.log(localStorage);
     // window.localStorage.clear();
     // window.localStorage.setItem("favoriteStatus", JSON.stringify(favoriteStatus));
