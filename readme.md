@@ -27,6 +27,6 @@ Challenges Faced:
 
     The api applied was layed out as an array which left the specified coins we wanted tough to display.
 
-![alt text](https://screenshot.png)
+<img src="imgs/screencapture-127-0-0-1-5500-index-html-2021-12-20-18_27_54.png">
 
-![alt text](https://imgs/screencapture-127-0-0-1-5500-index-html-2021-12-20-18_27_54.png)
+<img src="imgs/screenshot.png">
